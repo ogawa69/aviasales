@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap');
+
+.transfer {
+  display: flex;
+  flex-direction: column;
+  height: 252px;
+  max-width: 232px;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-family: 'Open Sans';
+  font-style: normal;
+  color: #4a4a4a;
+
+  &__title {
+    margin: 18px;
+    font-family: 'Open Sans';
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  &__check-box {
+    text-align: center;
+    font-family: 'Open Sans';
+    font-style: normal;
+    color: #4a4a4a;
+    height: 40px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+@media (min-width: 1380px) {
+  .transfer {
+    margin-left: auto;
+  }
+}
+
+@media ((min-width: 820px) and (max-width: 1380px)) {
+  .transfer {
+    margin-left: auto;
+  }
+}
+
+@media ((min-width: 320px) and (max-width: 820px)) {
+  .transfer {
+    max-width: 45%;
+    min-width: 150px;
+    margin-left: 2.5%;
+    margin-bottom: 20px;
+  }
+}
