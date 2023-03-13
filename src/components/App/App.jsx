@@ -3,7 +3,7 @@ import React from 'react'
 import logo from '../../assets/Logo.svg'
 import Filters from '../Filters/Filters'
 import TicketList from '../TicketList/TicketList'
-import Transfer from '../Transfer'
+import Transfer from '../Transfers'
 
 import './App.scss'
 
