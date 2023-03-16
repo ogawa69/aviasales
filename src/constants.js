@@ -13,10 +13,10 @@ export const filterItems = [
   },
   {
     name: 'two-trans',
-    label: '2 пересадка',
+    label: '2 пересадки',
   },
   {
     name: 'three-trans',
-    label: '3 пересадка',
+    label: '3 пересадки',
   },
 ]
