@@ -1,3 +1,3 @@
 # aviasales
 
-# Vercel: undefined
+# Vercel: https://aviasales-red-two.vercel.app/
