@@ -6,8 +6,16 @@ import styles from './TicketInfo.module.scss'
 const TicketInfo = (info) => {
   const { date, destination, duration, origin, stops } = info.info
 
-  const formatDuration = format(new Date(date).setMinutes(duration), 'HH:mm')
-  const formatRoadDate = format(new Date(date), 'HH:mm') + ' - ' + formatDuration
+  function getTimeFromMins(mins) {
+    let hours = Math.trunc(mins / 60)
+    let minutes = mins % 60
+    return (
+      (String(hours).length > 1 ? hours : `0${hours}`) + ':' + (String(minutes).length > 1 ? minutes : `0${minutes}`)
+    )
+  }
+
+  const formatDuration = getTimeFromMins(duration)
+  const formatRoadDate = format(new Date(date), 'HH:mm') + ' - ' + format(new Date(date).setMinutes(duration), 'HH:mm')
   const formatTrans = (stops) => {
     if (stops.length === 1) {
       return stops.length + ' пересадка'

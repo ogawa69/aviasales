@@ -22,15 +22,16 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
   }
-  
+
   &__filter-item {
     display: flex;
     align-items: center;
     height: 40px;
     padding-left: 20px;
     background-color: #fff;
+    cursor: pointer;
   }
-  
+
   &__custom-checkbox {
     display: inline-block;
     width: 20px;
@@ -57,7 +58,7 @@
   }
 
   &__filter-item:hover {
-    background-color: #F1FCFF;
+    background-color: #f1fcff;
   }
 
   &__check-box:checked + &__custom-checkbox {

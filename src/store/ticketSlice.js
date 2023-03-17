@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const initialState = {
   tickets: [],
-  stop: null,
+  loading: false,
+  error: false,
 }
 
 export const getTickets = createAsyncThunk('tickets/getTickets', async (searchId, { rejectWithValue, dispatch }) => {
@@ -14,8 +15,6 @@ export const getTickets = createAsyncThunk('tickets/getTickets', async (searchId
     }
 
     const tickets = await response.json()
-    console.log(tickets)
-
     dispatch(setTickets(tickets.tickets))
   } catch (error) {
     return rejectWithValue(error.message)
@@ -31,9 +30,16 @@ export const ticketSlice = createSlice({
     },
   },
   extraReducers: {
-    [getTickets.fulfilled]: () => console.log('fulfilled'),
-    [getTickets.pending]: () => console.log('pending'),
-    [getTickets.rejected]: () => console.log('rejected'),
+    [getTickets.fulfilled]: (state) => {
+      state.loading = false
+    },
+    [getTickets.pending]: (state) => {
+      state.loading = true
+    },
+    [getTickets.rejected]: (state) => {
+      state.loading = false
+      state.error = true
+    },
   },
 })
 

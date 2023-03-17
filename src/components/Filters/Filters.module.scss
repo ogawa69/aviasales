@@ -20,6 +20,25 @@
     text-transform: uppercase;
     color: #4a4a4a;
   }
+
+  &__button:hover {
+    border: 1px solid #2196f3;
+  }
+
+  &__button:active,
+  &__button:focus {
+    background-color: #2196f3;
+    color: white;
+    border: 0;
+  }
+
+  &__button:nth-child(1) {
+    border-radius: 7px 0 0 7px;
+  }
+
+  &__button:nth-child(3) {
+    border-radius: 0 7px 7px 0;
+  }
 }
 
 @media (min-width: 1380px) {

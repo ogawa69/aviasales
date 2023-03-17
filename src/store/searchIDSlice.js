@@ -30,11 +30,6 @@ export const searchIDSlice = createSlice({
       state.searchID = action.payload
     },
   },
-  extraReducers: {
-    [getSearchID.fulfilled]: () => console.log('fulfilled'),
-    [getSearchID.pending]: () => console.log('pending'),
-    [getSearchID.rejected]: () => console.log('rejected'),
-  },
 })
 
 export const { setSearchID } = searchIDSlice.actions

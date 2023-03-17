@@ -3,6 +3,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import transferReducer from './transferSlice'
 import ticketSlice from './ticketSlice'
 import searchIDSlice from './searchIDSlice'
+import filterSlice from './filterSlice'
 
 const middleware = getDefaultMiddleware({
   immutableCheck: false,
@@ -15,6 +16,7 @@ const store = configureStore({
     transfers: transferReducer,
     searchID: searchIDSlice,
     tickets: ticketSlice,
+    filters: filterSlice,
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production',
