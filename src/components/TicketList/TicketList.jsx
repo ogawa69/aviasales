@@ -13,8 +13,7 @@ import './TicketList.scss'
 const TicketList = () => {
   const dispatch = useDispatch()
   const [ticketOnPage, setTicketOnPage] = useState(5)
-  const ticketsState = useSelector((state) => state.tickets)
-  const { loading, error, tickets } = ticketsState
+  const { loading, error, tickets } = useSelector((state) => state.tickets)
   const filter = useSelector((state) => state.filters.changedFilter)
   const transfers = useSelector((state) => state.transfers)
 
@@ -94,8 +93,14 @@ const TicketList = () => {
 
   const loadingSpinner = loading ? <Spin className="spinner" /> : null
   const errorAlert = error ? <ErrorMessage /> : null
-  const sortedTickets = filter ? createTickets(filterSort(filter, filterTrans(transfers, tickets))) : null
-  const elements = !filter ? createTickets(filterTrans(transfers, tickets)) : null
+  const sortedTickets = filter ? createTickets(filterSort(filter, filterTrans(transfers, tickets))) : ''
+  const elements = !filter ? createTickets(filterTrans(transfers, tickets)) : ''
+  const moreBtn =
+    (sortedTickets.length || elements.length) && !loading && !error ? (
+      <button className="more-button" onClick={() => setTicketOnPage((ticketOnPage) => ticketOnPage + 5)}>
+        Показать еще 5 билетов!
+      </button>
+    ) : null
 
   return (
     <>
@@ -103,9 +108,7 @@ const TicketList = () => {
       {errorAlert}
       {elements}
       {sortedTickets}
-      <button className="more-button" onClick={() => setTicketOnPage((ticketOnPage) => ticketOnPage + 5)}>
-        Показать еще 5 билетов!
-      </button>
+      {moreBtn}
     </>
   )
 }
