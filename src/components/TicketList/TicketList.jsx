@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 import { Spin } from 'antd'
@@ -12,9 +12,9 @@ import './TicketList.scss'
 
 const TicketList = () => {
   const dispatch = useDispatch()
-  const loading = useSelector((state) => state.tickets.loading)
-  const error = useSelector((state) => state.tickets.error)
-  const tickets = useSelector((state) => state.tickets.tickets)
+  const [ticketOnPage, setTicketOnPage] = useState(5)
+  const ticketsState = useSelector((state) => state.tickets)
+  const { loading, error, tickets } = ticketsState
   const filter = useSelector((state) => state.filters.changedFilter)
   const transfers = useSelector((state) => state.transfers)
 
@@ -27,9 +27,15 @@ const TicketList = () => {
   }, [])
 
   const createTickets = (array) => {
-    return array.map((data) => {
-      return <Ticket key={uuidv4()} {...data} />
+    let count = 0
+    let tickets = []
+    array.forEach((data) => {
+      if (count < ticketOnPage) {
+        count = count + 1
+        tickets.push(<Ticket key={uuidv4()} {...data} />)
+      }
     })
+    return tickets
   }
 
   const filterTrans = (trans, tickets) => {
@@ -97,6 +103,9 @@ const TicketList = () => {
       {errorAlert}
       {elements}
       {sortedTickets}
+      <button className="more-button" onClick={() => setTicketOnPage((ticketOnPage) => ticketOnPage + 5)}>
+        Показать еще 5 билетов!
+      </button>
     </>
   )
 }
